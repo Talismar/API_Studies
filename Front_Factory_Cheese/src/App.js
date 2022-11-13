@@ -26,6 +26,9 @@ function App() {
   const api_action = useCallback((action, endpoint, saveInto="seller", datas={}) => {
        
     if (action === 'GET'){
+      setSystemList([])
+      setPurchasesList([])
+
       axios.get(base_url + endpoint)
       .then((res) => {
 
