@@ -1,10 +1,10 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import styles from "./styles.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faTrash, faPenToSquare} from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom";
 
-function TableListSystem({systemList, api_action, seller_id}) {
+function TableListSystem({setSystemList, systemList, api_action, seller_id}) {
 
   const nameSeller = useRef("")
 
@@ -15,6 +15,13 @@ function TableListSystem({systemList, api_action, seller_id}) {
     nameSeller.current.value = ""
     nameSeller.current.focus()
   }
+
+  useEffect(() => {
+    return () => {
+      console.log("System Unmount");
+      setSystemList([])
+    }
+  }, [setSystemList])
 
   return (
     <>    

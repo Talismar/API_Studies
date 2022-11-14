@@ -1,9 +1,9 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import styles from "./styles.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faTrash, faPenToSquare} from "@fortawesome/free-solid-svg-icons"
 
-function TableListPurchase({purchasesList, api_action, list_id}) {
+function TableListPurchase({setPurchasesList, purchasesList, api_action, list_id}) {
 
   const amountLiter = useRef("")
 
@@ -14,6 +14,13 @@ function TableListPurchase({purchasesList, api_action, list_id}) {
     amountLiter.current.value = ""
     amountLiter.current.focus()
   }
+
+  useEffect(() => {
+    return () => {
+      console.log("Purchase Unmount");
+      setPurchasesList([])
+    }
+  }, [setPurchasesList])
 
   return (
     <>    

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { useParams } from "react-router-dom"
 import TableListSystem from "../TableListSystem"
 
-function ListSystem({systemList, api_action}) {
+function ListSystem({setSystemList, systemList, api_action}) {
   
   const id = useParams().id
   // const liter = useRef(0)
@@ -14,7 +14,7 @@ function ListSystem({systemList, api_action}) {
   return (
     <main className='container'>
       
-      <TableListSystem systemList={systemList} api_action={api_action} seller_id={id}/>
+      <TableListSystem setSystemList={setSystemList} systemList={systemList} api_action={api_action} seller_id={id}/>
 
     </main>
   );

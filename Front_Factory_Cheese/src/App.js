@@ -26,9 +26,6 @@ function App() {
   const api_action = useCallback((action, endpoint, saveInto="seller", datas={}) => {
        
     if (action === 'GET'){
-      setSystemList([])
-      setPurchasesList([])
-
       axios.get(base_url + endpoint)
       .then((res) => {
 
@@ -86,8 +83,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Header />}>
               <Route index element={<ListSeller sellerList={sellerList} api_action={api_action}/>} />
-              <Route path="listSystemForSeller/:id" element={<ListSystem systemList={systemList} api_action={api_action}/>} />
-              <Route path="listPurchase/:id" element={<ListPurchase purchasesList={purchasesList} api_action={api_action}/>} />
+              <Route path="listSystemForSeller/:id" element={<ListSystem setSystemList={setSystemList} systemList={systemList} api_action={api_action}/>} />
+              <Route path="listPurchase/:id" element={<ListPurchase setPurchasesList={setPurchasesList} purchasesList={purchasesList} api_action={api_action}/>} />
               <Route path="*" element={<NoPage />} />
             </Route>
           </Routes>
