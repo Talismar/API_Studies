@@ -2,8 +2,12 @@ import React, {useEffect} from 'react';
 import { useParams } from "react-router-dom"
 import TableListPurchase from "../TableListPurchase"
 
-function ListPurchase({setPurchasesList, purchasesList, api_action}) {
-  
+import { CoreContext } from "../../contexts/Context"
+
+function ListPurchase() {
+
+  const {api_action} = React.useContext(CoreContext)
+
   const id = useParams().id
     
   useEffect(() => {
@@ -13,7 +17,7 @@ function ListPurchase({setPurchasesList, purchasesList, api_action}) {
   return (
     <main className='container'>
     
-      <TableListPurchase setPurchasesList={setPurchasesList} purchasesList={purchasesList} api_action={api_action} list_id={id}/>
+      <TableListPurchase list_id={id}/>
 
     </main>
   );

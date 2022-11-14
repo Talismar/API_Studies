@@ -1,11 +1,11 @@
 import React from 'react';
 import TableListSeller from '../TableListSeller';
 
-function ListSeller({sellerList, api_action}) {
+function ListSeller() {
   return (
     <main className='container'>
       
-      <TableListSeller api_action={api_action} sellerList={sellerList}/>
+      <TableListSeller />
             
     </main>
   );

@@ -4,9 +4,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faTrash, faPenToSquare} from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom";
 
-function TableListSystem({setSystemList, systemList, api_action, seller_id}) {
+import { CoreContext } from "../../contexts/Context"
+
+function TableListSystem({seller_id}) {
 
   const nameSeller = useRef("")
+  const {setSystemList, systemList, api_action} = React.useContext(CoreContext)
 
   const newListSystem = async () => {
     if (nameSeller.current.value) {
