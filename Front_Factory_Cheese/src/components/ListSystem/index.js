@@ -2,10 +2,12 @@ import React, {useEffect} from 'react';
 import { useParams } from "react-router-dom"
 import TableListSystem from "../TableListSystem"
 
-function ListSystem({setSystemList, systemList, api_action}) {
+import { CoreContext } from "../../contexts/Context"
+
+function ListSystem() {
   
   const id = useParams().id
-  // const liter = useRef(0)
+  const {api_action} = React.useContext(CoreContext)
   
   useEffect(() => {
     api_action("GET", `SellerList/${id}`, "system")
@@ -14,7 +16,7 @@ function ListSystem({setSystemList, systemList, api_action}) {
   return (
     <main className='container'>
       
-      <TableListSystem setSystemList={setSystemList} systemList={systemList} api_action={api_action} seller_id={id}/>
+      <TableListSystem seller_id={id}/>
 
     </main>
   );

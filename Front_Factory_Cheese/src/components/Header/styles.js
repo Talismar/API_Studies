@@ -26,4 +26,4 @@ export const StyleHeader = styled.header`
     text-decoration: none;
     color: white;
   }
-`
+`;

@@ -1,26 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
+import styled from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import ListSeller from "./components/ListSeller";
-import ListSystem from "./components/ListSystem";
-import ListPurchase from "./components/ListPurchase";
-import Footer from "./components/Footer";
+import Header from "./components/Header/index";
 import styles from "./styles.module.css";
 import { CoreContext } from "./contexts/Context";
 
-const NoPage = () => {
-  return <h1>No found</h1>;
-};
+/* My Components */
+import ListSeller from "./components/ListSeller";
+import Footer from "./components/Footer/index";
+import ListSystem from "./components/ListSystem";
+import ListPurchase from "./components/ListPurchase";
 
 function App() {
   const { api_action } = React.useContext(CoreContext);
 
-  useEffect(() => {
+  React.useEffect(() => {
     api_action("GET", "SellerList/");
   }, [api_action]);
 
   return (
-    <div className={styles.app}>
+    <StyleAppContainer className="Test">
       <div className={styles.main}>
         <BrowserRouter>
           <Routes>
@@ -37,8 +36,22 @@ function App() {
       <div className={styles.footer}>
         <Footer />
       </div>
-    </div>
+    </StyleAppContainer>
   );
 }
 
 export default App;
+
+const NoPage: React.FC = () => {
+  return <h1>Page Not Fount</h1>;
+};
+
+const StyleAppContainer = styled.div`
+  
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+
+`;

@@ -3,9 +3,12 @@ import styles from "./styles.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faTrash, faPenToSquare} from "@fortawesome/free-solid-svg-icons"
 
-function TableListPurchase({setPurchasesList, purchasesList, api_action, list_id}) {
+import { CoreContext } from "../../contexts/Context"
+
+function TableListPurchase({list_id}) {
 
   const amountLiter = useRef("")
+  const {setPurchasesList, purchasesList, api_action} = React.useContext(CoreContext)
 
   const newItemIntoList = async () => {
     if (amountLiter.current.value) {
